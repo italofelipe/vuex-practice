@@ -8,18 +8,20 @@
           <p class="lead">Padrão de gerenciamento de Estado Centralizado no Vue</p>
       </div>
       <div class="container">
+        <Contador />
 
-        
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Contador from './components/Contador'
 
 export default {
   name: 'app',
   components: {
+    Contador
   }
 }
 </script>
