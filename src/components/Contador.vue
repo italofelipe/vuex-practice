@@ -34,14 +34,16 @@ export default {
 	},
 	// Essa computed (contador) é basicamente uma "referência"
 	// para $store.state.
-   computed: mapState({
+   computed: 	{
+     ...mapState({
       contador: 'contador', /* -> Note que a chave é o que usamos nesse componente,
        e o valor é algo que está dentro do State no Vuex */
        contadorAlias: 'contador',
        contadorMultiplicado(state) {
          return state.contador * this.contadorLocal
        }
-    })  	
+    })  
+   }
   /*
     Alternativamente, poderíamos re-escrever essa computed
     das seguints maneiras:

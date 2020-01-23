@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    contador: 0
+    contador: 0,
+    nome: 'The Lich King'
   }
 })
