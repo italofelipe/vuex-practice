@@ -63,7 +63,7 @@ export default {
 			exibirFormulario: false,
 			tarefaSelecionada: undefined
 		};
-	},
+  },
 	methods: {
 		exibirFormularioCriarTarefa() {
 			// Verificar se ja temos uma tarefa selecionada (ja temos isso lcoalmente no Data)

@@ -10,8 +10,8 @@ export default new Vuex.Store({
 			{ id: 1, titulo: "Aprender Vue.js", concluido: true },
 			{ id: 2, titulo: "Aprender Vuex", concluido: true },
 			{ id: 3, titulo: "Aprender Vue Router", concluido: true },
-			{ id: 3, titulo: "Aprender GraphQL", concluido: false },
-			{ id: 3, titulo: "Aprender React Native", concluido: false }
+			{ id: 4, titulo: "Aprender GraphQL", concluido: false },
+			{ id: 5, titulo: "Aprender React Native", concluido: false }
 		],
 		nome: "A message from inside the Vuex Store. Nice, isn'/t it? "
 	},
@@ -31,6 +31,14 @@ export default new Vuex.Store({
 		},
 		totalTarefasConcluidas: (state, getters) => {
 			return getters.tarefasConcluidas.length;
+		},
+		buscarTarefaPorId: state => {
+			/* Implementação feita para que o componente possa chamar um getter como function
+        e poder passar argumentos pra ela.
+      */
+			return id => {
+				return state.tarefas.find(t => t.id === id);
+			};
 		}
 	}
 });
