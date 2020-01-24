@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Vuex</h1>
-        <h2 class="text-success">{{`${scourge} must fall!`}}</h2>
+        <h2 class="text-success">{{`${scourge}`}}</h2>
         <p class="lead">Padrão de gerenciamento de Estado Centralizado no Vue</p>
       </div>
       <div class="container">

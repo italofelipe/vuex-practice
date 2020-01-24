@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapState} from 'vuex'
 import TarafasListaItem from "./TarafasListaItem";
 import TarafaSalvar from "./TarafaSalvar";
 export default {
@@ -37,12 +38,8 @@ export default {
   data() {
     return {
       exibirFormulario: false,
-      tarefaSelecionada: undefined,
-      tarefas: [
-        { id: 1, titulo: "Aprender Vue.js", concluido: true },
-        { id: 2, titulo: "Aprender Vuex", concluido: false },
-        { id: 3, titulo: "Aprender Vue Router", concluido: false }
-      ]
+      tarefaSelecionada: undefined
+      
     };
   },
   methods: {
@@ -62,6 +59,9 @@ export default {
       this.exibirFormulario = false;
       this.tarefaSelecionada = undefined;
     }
+  },
+  computed: {
+    ...mapState(['tarefas'])
   }
 };
 </script>
