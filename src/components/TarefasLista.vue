@@ -58,7 +58,8 @@ export default {
   },
   created() {
     // Commit e a maneira do Vuex de chamar uma mutation no Store do Vuex
-    this.$store.commit("listarTarefas", {
+    this.$store.commit({
+      type: "listarTarefas",
       tarefas: [
         { id: 1, titulo: "Aprender Vue.js", concluido: true },
         { id: 2, titulo: "Aprender Vuex", concluido: true },
