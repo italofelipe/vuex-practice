@@ -56,6 +56,10 @@ export default {
       tarefaSelecionada: undefined
     };
   },
+  created() {
+    // Commit e a maneira do Vuex de chamar uma mutation no Store do Vuex
+    this.$store.commit("listarTarefas");
+  },
   methods: {
     exibirFormularioCriarTarefa() {
       // Verificar se ja temos uma tarefa selecionada (ja temos isso lcoalmente no Data)

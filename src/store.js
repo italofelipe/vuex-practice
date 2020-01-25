@@ -1,18 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
 		contador: 0,
-		tarefas: [
-			{ id: 1, titulo: "Aprender Vue.js", concluido: true },
-			{ id: 2, titulo: "Aprender Vuex", concluido: true },
-			{ id: 3, titulo: "Aprender Vue Router", concluido: true },
-			{ id: 4, titulo: "Aprender GraphQL", concluido: false },
-			{ id: 5, titulo: "Aprender React Native", concluido: false }
-		],
+		tarefas: [],
 		nome: "A message from inside the Vuex Store. Nice, isn'/t it? "
 	},
 	/* Getters no Vuex são uma forma de se fazer uma tratativa em cima dos dados 
@@ -23,22 +17,39 @@ export default new Vuex.Store({
   */
 	getters: {
 		//
-		tarefasConcluidas: state => {
-			return state.tarefas.filter(tarefa => tarefa.concluido === true);
+		tarefasConcluidas: (state) => {
+			return state.tarefas.filter((tarefa) => tarefa.concluido === true);
 		},
-		tarefasAFazer: state => {
-			return state.tarefas.filter(tarefa => tarefa.concluido === false);
+		tarefasAFazer: (state) => {
+			return state.tarefas.filter((tarefa) => tarefa.concluido === false);
 		},
 		totalTarefasConcluidas: (state, getters) => {
 			return getters.tarefasConcluidas.length;
 		},
-		buscarTarefaPorId: state => {
+		buscarTarefaPorId: (state) => {
 			/* Implementação feita para que o componente possa chamar um getter como function
         e poder passar argumentos pra ela.
       */
-			return id => {
-				return state.tarefas.find(t => t.id === id);
+			return (id) => {
+				return state.tarefas.find((t) => t.id === id);
 			};
+		}
+	},
+	/*
+		Mutations: Maneira do Vuex de alterar o estado global de uma forma previsivel (predictable way)
+		Mutations sempre sao objetos, e dentro do objeto escrevemos funcoes. Essas funcoes recebem o 
+		state como primeiro parametro, e entao, no corpo da funcao, podemos descrever o que acontecera
+		com o state caso invoquemos a funcao. Bem semelhante aos Reducers.
+	*/
+	mutations: {
+		listarTarefas: (state) => {
+			state.tarefas = [
+				{ id: 1, titulo: 'Aprender Vue.js', concluido: true },
+				{ id: 2, titulo: 'Aprender Vuex', concluido: true },
+				{ id: 3, titulo: 'Aprender Vue Router', concluido: true },
+				{ id: 4, titulo: 'Aprender GraphQL', concluido: false },
+				{ id: 5, titulo: 'Aprender React Native', concluido: false }
+			];
 		}
 	}
 });
