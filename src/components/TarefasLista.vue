@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 import TarafasListaItem from "./TarafasListaItem";
 import TarafaSalvar from "./TarafaSalvar";
 export default {
@@ -58,8 +58,8 @@ export default {
   },
   created() {
     // Commit e a maneira do Vuex de chamar uma mutation no Store do Vuex
-    this.$store.commit({
-      type: "listarTarefas",
+
+    this.listarTarefas({
       tarefas: [
         { id: 1, titulo: "Aprender Vue.js", concluido: true },
         { id: 2, titulo: "Aprender Vuex", concluido: true },
@@ -70,6 +70,7 @@ export default {
     });
   },
   methods: {
+    ...mapMutations(["listarTarefas"]),
     exibirFormularioCriarTarefa() {
       // Verificar se ja temos uma tarefa selecionada (ja temos isso lcoalmente no Data)
       if (this.tarefaSelecionada) {
