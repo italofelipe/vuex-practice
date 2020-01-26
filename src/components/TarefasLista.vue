@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import TarafasListaItem from "./TarafasListaItem";
 import TarafaSalvar from "./TarafaSalvar";
 export default {
@@ -57,20 +57,23 @@ export default {
     };
   },
   created() {
-    // Commit e a maneira do Vuex de chamar uma mutation no Store do Vuex
-
-    this.listarTarefas({
-      tarefas: [
-        { id: 1, titulo: "Aprender Vue.js", concluido: true },
-        { id: 2, titulo: "Aprender Vuex", concluido: true },
-        { id: 3, titulo: "Aprender Vue Router", concluido: true },
-        { id: 4, titulo: "Aprender GraphQL", concluido: false },
-        { id: 5, titulo: "Aprender React Native", concluido: false }
-      ]
-    });
+    /* SetTimeout criado para simularmos um ambiente de dados vindo de forma assincrona,
+    isto e, os componentes Vue serem renderizados antes dos dados serem de fato inputados
+    no State, como ocorre quando estamos consumindo dados de uma API Rest */
+    setTimeout(() => {
+      this.$store.dispatch({
+        type: "listarTarefas",
+        tarefas: [
+          { id: 1, titulo: "Aprender Vue.js", concluido: true },
+          { id: 2, titulo: "Aprender Vuex", concluido: true },
+          { id: 3, titulo: "Aprender Vue Router", concluido: true },
+          { id: 4, titulo: "Aprender GraphQL", concluido: false },
+          { id: 5, titulo: "Aprender React Native", concluido: false }
+        ]
+      });
+    }, 1000);
   },
   methods: {
-    ...mapMutations(["listarTarefas"]),
     exibirFormularioCriarTarefa() {
       // Verificar se ja temos uma tarefa selecionada (ja temos isso lcoalmente no Data)
       if (this.tarefaSelecionada) {
@@ -102,4 +105,13 @@ export default {
     ])
   }
 };
+/* 
+  Diferencas cruciais entre actions e mutations no Vuex:
+  1. Uma action, em vez de causar alteracoes diretamente no State, ela commita uma mutation, 
+  e a mutation e quem altera o estado.
+  2. Ao contrario das Mutations, as Actions podem sim executar codigo assincrono (ex: buscar dados em uma API.)
+  
+
+*/
 </script>
+

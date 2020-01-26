@@ -45,5 +45,15 @@ export default new Vuex.Store({
 		listarTarefas: (state, { tarefas }) => {
 			state.tarefas = tarefas;
 		}
+	},
+
+	/* ACTIONS: Forma do Vuex de se mexer no Estado de forma assincrona. Cada chave no objeto, representa uma action diferente
+		1 - Context: Recebe todas as propriedades e metodos que podemos acessar dentro do Vuex.store()
+		2 - Payload: 
+	*/
+	actions: {
+		listarTarefas: (context, payload) => {
+			context.commit('listarTarefas', payload);
+		}
 	}
 });
