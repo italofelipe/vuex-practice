@@ -49,11 +49,13 @@ export default new Vuex.Store({
 
 	/* ACTIONS: Forma do Vuex de se mexer no Estado de forma assincrona. Cada chave no objeto, representa uma action diferente
 		1 - Context: Recebe todas as propriedades e metodos que podemos acessar dentro do Vuex.store()
-		2 - Payload: 
+		2 - Payload: Dados propriamente dito.
 	*/
 	actions: {
 		listarTarefas: (context, payload) => {
-			context.commit('listarTarefas', payload);
+			setTimeout(() => {
+				context.commit('listarTarefas', payload);
+			}, 2000);
 		}
 	}
 });
