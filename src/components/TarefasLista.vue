@@ -61,16 +61,7 @@ export default {
     isto e, os componentes Vue serem renderizados antes dos dados serem de fato inputados
     no State, como ocorre quando estamos consumindo dados de uma API Rest */
     setTimeout(() => {
-      this.$store.dispatch({
-        type: "listarTarefas",
-        tarefas: [
-          { id: 1, titulo: "Aprender Vue.js", concluido: true },
-          { id: 2, titulo: "Aprender Vuex", concluido: true },
-          { id: 3, titulo: "Aprender Vue Router", concluido: true },
-          { id: 4, titulo: "Aprender GraphQL", concluido: false },
-          { id: 5, titulo: "Aprender React Native", concluido: false }
-        ]
-      });
+      this.$store.dispatch("listarTarefas");
     }, 1000);
   },
   methods: {

@@ -52,10 +52,23 @@ export default new Vuex.Store({
 		2 - Payload: Dados propriamente dito.
 	*/
 	actions: {
-		listarTarefas: (context, payload) => {
-			setTimeout(() => {
-				context.commit('listarTarefas', payload);
-			}, 2000);
+		buscarTarefas: () => {
+			return new Promise((resolve) => {
+				setTimeout(() => {
+					resolve([
+						{ id: 1, titulo: 'Aprender Vue.js', concluido: true },
+						{ id: 2, titulo: 'Aprender Vuex', concluido: true },
+						{ id: 3, titulo: 'Aprender Vue Router', concluido: true },
+						{ id: 4, titulo: 'Aprender GraphQL', concluido: false },
+						{ id: 5, titulo: 'Aprender React Native', concluido: false }
+					]);
+				}, 2000);
+			});
+		},
+		listarTarefas: ({ commit, dispatch }) => {
+			return dispatch('buscarTarefas').then((tarefas) => {
+				commit('listarTarefas', { tarefas });
+			});
 		}
 	}
 });
